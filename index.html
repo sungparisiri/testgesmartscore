@@ -536,7 +536,7 @@ color:#456;
 
     <button
   id="loginBtn"
-  onclick="loginWithGoogle()"
+  onclick="loginGoogle()"
   class="google-btn">
   🔐 Login with @g.swu.ac.th
 </button>
@@ -1324,8 +1324,7 @@ async function initializeAuth(){
 // ฟังก์ชันใน ES module จะไม่ถูกเพิ่มลง window อัตโนมัติ
 // จึง expose เฉพาะฟังก์ชันที่ถูกเรียกจาก onclick ใน HTML
 Object.assign(window, {
-  showLoginModal,
-  confirmLogin,
+  loginGoogle,    
   handleLogout,
   refreshCurrentPage,
   getAccessToken
