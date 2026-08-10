@@ -536,7 +536,7 @@ color:#456;
 
     <button
   id="loginBtn"
-  onclick="showLoginModal()"
+  onclick="loginWithGoogle()"
   class="google-btn">
   🔐 Login with @g.swu.ac.th
 </button>
@@ -1143,28 +1143,6 @@ function hideLoginError(){
   document.getElementById("loginError").style.display="none";
 
 }
-function showLoginModal(){
-
-    const modal =
-      new bootstrap.Modal(
-        document.getElementById("loginModal")
-      );
-
-    modal.show();
-
-}
-
-function confirmLogin(){
-
-    bootstrap.Modal
-      .getInstance(
-        document.getElementById("loginModal")
-      )
-      .hide();
-
-    loginGoogle();
-
-}
 
 const initAuth = (
   onAuthSuccess,
@@ -1360,42 +1338,6 @@ initializeAuth();
 </div>
 </div>
 
-<div class="modal fade" id="loginModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
-  <div class="modal-dialog modal-dialog-centered" style="max-width:430px;">
-    <div class="modal-content" style="border-radius:20px;">
-
-      <div class="modal-body text-center" style="font-size:.95rem;line-height:1.8;padding:28px 24px;">
-
-        <div style="font-size:2rem;">🎓</div>
-
-        <div style="font-size:1.15rem;font-weight:700;margin:10px 0 16px;">
-          ก่อนเข้าสู่ระบบดูคะแนน GE Smart Score
-        </div>
-
-        <div>
-          <span style="color:#166534;">
-          <b>✅เปิดได้เฉพาะ Chrome หรือ Safari เท่านั้น</b><br>
-          </span>
-
-          <span style="color:#b91c1c;">
-            <b>⚠️หากเปิดผ่าน LINE App อาจไม่สามารถเข้าสู่ระบบได้</b>
-          </span>
-
-        </div>
-
-      </div>
-
-      <div class="modal-footer border-0 justify-content-center">
-
-        <button class="btn btn-main px-4" onclick="confirmLogin()">
-          รับทราบ
-        </button>
-
-      </div>
-
-    </div>
-  </div>
-</div>
 
     </div>
   </div>
