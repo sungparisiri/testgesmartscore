@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700;800&display=swap"
+rel="stylesheet">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+rel="stylesheet">
+
+<style>
+
+/* =========================
+   LOGIN PAGE
+========================= */
+
+#loginView{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#edf4f6;
+}
+
+.login-card{
+
+  width:420px;
+  max-width:90%;
+
+  background:#f8f8f8;
+
+  border-radius:28px;
+
+  padding:40px 35px;
+
+  text-align:center;
+
+  box-shadow:
+  0 10px 30px rgba(0,0,0,0.05);
+}
+
+.login-logo{
+
+  width:260px;
+
+  max-width:100%;
+
+  margin-bottom:25px;
+}
+
+.login-title{
+
+  font-size:2.2rem;
+
+  font-weight:800;
+
+  color:#48606a;
+
+  line-height:1.2;
+
+  margin-bottom:8px;
+}
+
+.login-subtitle{
+
+  font-size:1.1rem;
+
+  font-weight:700;
+
+  color:#48606a;
+
+  margin-bottom:18px;
+}
+
+.google-btn{
+
+  width:100%;
+
+  border:none;
+
+  border-radius:18px;
+
+  padding:14px;
+
+  font-size:1.2rem;
+
+  font-weight:700;
+
+  color:#fff;
+
+  background:
+  linear-gradient(
+    90deg,
+    #6cae9e 0%,
+    #8bb7dc 100%
+  );
+
+  transition:.25s;
+}
+
+.google-btn:hover{
+
+  transform:translateY(-2px);
+
+  box-shadow:
+  0 10px 24px rgba(0,0,0,.12);
+}
+
+#headerUser{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:0.85rem;
+  line-height:1.2;
+}
+
+#headerUser img{
+  width:38px;
+  height:38px;
+
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.user-meta{
+  line-height:1.2;
+}
+
+.student-id{
+  font-size:0.7rem;
+  font-weight:700;
+  color:#334155;
+}
+
+:root{
+
+--green:#6cae9e;
+--blue:#8bb7dc;
+--dark:#49616a;
+}
+
+body{
+
+font-family:'Sarabun',sans-serif;
+
+background:
+linear-gradient(
+135deg,
+#f3fffb,
+#eef7ff
+);
+
+min-height:100vh;
+overflow-x:hidden;
+}
+
+.google-btn:hover{
+
+transform:translateY(-2px);
+
+box-shadow:
+0 10px 24px rgba(0,0,0,0.08);
+}
+
+.brand-title{
+
+font-size:2rem;
+
+font-weight:800;
+
+text-align:center;
+
+color:var(--dark);
+
+margin-bottom:4px;
+}
+
+
+.form-control{
+
+border:none !important;
+
+border-radius:18px !important;
+
+padding:14px;
+
+background:white;
+
+box-shadow:
+0 4px 14px rgba(0,0,0,0.04);
+}
+
+.btn-main{
+
+background:
+linear-gradient(
+135deg,
+#6cae9e,
+#8bb7dc
+);
+
+border:none;
+
+color:white;
+
+font-weight:700;
+
+border-radius:18px;
+
+padding:12px;
+}
+
+.subject-card{
+
+width:100%;
+
+border:none;
+
+border-radius:24px;
+
+padding:18px;
+
+margin-bottom:12px;
+
+font-size:1.2rem;
+
+font-weight:800;
+
+color:white;
+
+background:
+linear-gradient(
+135deg,
+#6cae9e,
+#8bb7dc
+);
+
+box-shadow:
+0 8px 20px rgba(108,174,158,0.18);
+
+transition:0.2s;
+
+cursor:pointer;
+}
+
+.subject-card:hover{
+
+transform:translateY(-2px);
+
+box-shadow:
+0 12px 24px rgba(108,174,158,0.24);
+}
+
+.header-strip{
+
+position:sticky;
+
+top:0;
+
+z-index:100;
+
+background:white;
+
+padding:12px 18px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+}
+
+.big-grade{
+
+font-size:3.5rem;
+
+font-weight:800;
+
+line-height:1;
+
+background:
+linear-gradient(
+135deg,
+#6cae9e,
+#8bb7dc
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.status-box{
+
+max-width: 420px;
+margin: 0 auto 10px;
+
+background:
+linear-gradient(
+135deg,
+#ffffff,
+#f4fbff
+);
+
+padding:12px;
+
+border-radius:24px;
+
+margin-bottom:10px;
+}
+
+.data-row{
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  gap:10px;
+
+  padding:8px 2px;
+
+  border-bottom:1px solid #e2e8f0;
+
+  font-size:0.75rem;
+  line-height:1.3;
+}
+
+/* ชื่อกิจกรรม */
+.data-row span{
+
+flex:4;
+
+min-width:0;
+
+word-break:break-word;
+}
+
+/* ค่าคะแนน */
+
+.data-row b{
+
+  flex: 0 0 85px;
+  display:block;
+
+  justify-content:center;
+
+  align-items:center;
+
+  text-align:center;
+}
+
+.total-row{
+  background:#eef7ff;
+  border-radius:14px;
+  margin-top:12px;
+  border-bottom:none;
+
+  min-height:55px;   /* ✅ เพิ่มความสูงแทน */
+}
+
+.total-row span,
+.total-row b{
+
+  font-size:0.75rem !important;
+  line-height:1.3 !important;
+
+}
+
+.nav-pills{
+
+background:#eef7ff;
+
+padding:5px;
+
+border-radius:18px;
+}
+
+.nav-link{
+
+  padding:4px 8px !important;
+
+  border-radius:14px !important;
+
+  font-size:0.75rem;
+
+  font-weight:700;
+
+  color:#567;
+}
+
+.nav-pills .nav-link.active{
+
+background:
+linear-gradient(
+135deg,
+#6cae9e,
+#8bb7dc
+) !important;
+
+color:white !important;
+}
+
+.badge-ui{
+
+  padding:6px 12px;
+
+  border-radius:999px;
+
+  font-size:0.78rem;
+
+  font-weight:700;
+}
+
+#mainContent{
+  display:none;
+}
+
+.logout-btn{
+
+  border:none;
+
+  border-radius:18px;
+
+  padding:4px 10px;
+
+  font-size:0.8rem;
+
+  font-weight:700;
+
+  background:
+  linear-gradient(
+    135deg,
+    #6cae9e,
+    #8bb7dc
+  );
+
+  color:white;
+
+  transition:0.2s;
+
+}
+
+.logout-btn:hover{
+
+transform:translateY(-2px);
+
+box-shadow:
+0 12px 24px rgba(108,174,158,0.24);
+}
+
+.subject-info{
+
+background:
+linear-gradient(
+135deg,
+#eef7ff,
+#f3fffb
+);
+
+padding:10px 12px;
+
+border-radius:20px;
+
+margin-bottom:14px;
+
+font-size:0.88rem;
+
+font-weight:700;
+
+color:#456;
+}
+
+.spinner-border{
+  color: #6cae9e !important;
+}
+
+/* =========================
+   LOGIN ALERT
+========================= */
+
+.login-alert{
+  margin-top:18px;
+  border-radius:16px;
+  font-size:0.8rem;
+  font-weight:600;
+  text-align:left;
+  display:none;
+  animation:fadeIn .25s ease;
+  background:#FFFFFF;
+  border:3px solid #E76F2C;
+  color:#92400E;
+}
+
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:translateY(-8px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- LOGIN PAGE -->
+
+<div id="loginView">
+
+  <div id="loginBox" class="login-card">
+
+    <img
+      class="login-logo"
+      src="https://drive.google.com/thumbnail?id=1FPkR-OBIGtQp436UMSE3QNxvG9W3EeQh&sz=w1000"
+      alt="SWU Logo">
+
+    <div class="login-title" style="font-size:1.8rem;">
+      ระบบแสดงผลคะแนน
+    </div>
+
+    <div class="login-title"
+         style="margin-bottom:28px;">
+      GE SMART SCORE
+    </div>
+
+    <button
+  id="loginBtn"
+  onclick="showLoginModal()"
+  class="google-btn">
+  🔐 Login with @g.swu.ac.th
+</button>
+
+    <div
+    id="loginError"
+    class="alert alert-warning login-alert">
+</div>
+
+    <div
+  style="
+    margin-top:14px;
+    text-align:center;
+    font-size:0.8rem;
+    font-weight:700;
+    color:#b91c1c;
+    line-height:1;
+  ">
+  <b>*เปิดได้เฉพาะบน Chrome หรือ Safari เท่านั้น</b>
+</div>
+
+  </div>
+
+</div>
+
+<!-- LOGIN -->
+
+<!-- GLOBAL HEADER -->
+
+<div id="globalHeader" class="header-strip" style="display:none;">
+
+  <!-- ย้าย USER มาไว้ซ้าย -->
+  <div id="headerUser">
+  </div>
+
+<div style="display:flex;flex-direction:column;gap:6px;">
+
+  <button
+    class="logout-btn"
+    onclick="handleLogout()">
+    🚪 Log out
+  </button>
+
+  <button
+    class="logout-btn"
+    onclick="refreshCurrentPage()">
+    🔄 Refresh
+  </button>
+
+</div>
+
+</div>
+
+<!-- SCORE -->
+
+<div id="mainContent">
+
+<div class="container py-2 px-2"
+style="max-width:480px;">
+
+<div class="bg-white p-2 rounded-4 shadow-sm">
+
+<ul class="nav nav-pills mb-3">
+
+<li class="nav-item">
+<button class="nav-link ${isBtn('#tabDash')}"
+data-bs-toggle="pill"
+data-bs-target="#tabDash">
+
+Dashboard
+
+</button>
+</li>
+
+<li class="nav-item">
+<button class="nav-link"
+data-bs-toggle="pill"
+data-bs-target="#tab1">
+
+CLO1
+
+</button>
+</li>
+
+<li class="nav-item">
+<button class="nav-link"
+data-bs-toggle="pill"
+data-bs-target="#tab2">
+
+CLO2
+
+</button>
+</li>
+
+<li class="nav-item">
+<button class="nav-link"
+data-bs-toggle="pill"
+data-bs-target="#tab3">
+
+CLO3
+
+</button>
+</li>
+
+</ul>
+
+<div class="tab-content"
+id="scoreContent">
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script type="module">
+
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signOut,
+  setPersistence,
+  inMemoryPersistence
+} from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD1KJD625lxgaK9wKrirrfhOfQ140vPqPM",
+  authDomain: "ge-smart-score.firebaseapp.com",
+  projectId: "ge-smart-score",
+  storageBucket: "ge-smart-score.firebasestorage.app",
+  messagingSenderId: "69973066273",
+  appId: "1:69973066273:web:90cab092a341f15391d960",
+  measurementId: "G-FXC5LGMJTY"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+const provider = new GoogleAuthProvider();
+
+// บังคับให้ Google แสดงหน้าเลือกบัญชีทุกครั้ง
+provider.setCustomParameters({
+  prompt: 'select_account'
+});
+
+// URL สำหรับเรียก API ของ Google Apps Script Web App
+const GAS_API_URL = "https://script.google.com/macros/s/AKfycbwOVFjcYzL8ztLXw-X2530rwbMSJV_esIFtVtpyOgP24w7oPsEeRud19QatTu81mY4S/exec"; 
+
+let isSigningIn = false;
+let cachedAccessToken = null;
+let unsubscribeAuth = null;
+
+let currentView = 'mainContent';
+let userData = {};
+let scores = {};
+let currentTab = '#tabDash';
+let isLoggingIn = false;
+let authReady = false;
+
+/* จำแท็บล่าสุด */
+
+document.addEventListener('click', function(e){
+
+const btn =
+e.target.closest('.nav-link');
+
+if(!btn) return;
+
+const tabId =
+btn.getAttribute('data-bs-target');
+
+currentTab = tabId;
+
+activateTab(tabId);
+
+});
+
+function switchView(id){
+
+  currentView = id;
+
+  document.getElementById(
+    'mainContent'
+  ).style.display =
+  (id === 'mainContent')
+  ? 'block'
+  : 'none';
+
+  document.getElementById(
+    'globalHeader'
+  ).style.display =
+  (id === 'mainContent')
+  ? 'flex'
+  : 'none';
+
+} 
+
+function fmt(val){
+
+  if(val === null || val === undefined || val === "")
+    return "";
+
+  let str = val.toString().trim().toLowerCase();
+
+  if(str === "true")
+  return '<span style="color:#111827;font-weight:700;">✅ True</span>';
+
+  if(str === "false")
+  return '<span style="color:#111827;font-weight:700;">❌ False</span>';
+
+  if(str === "o")
+    return '<span class="badge-ui badge-o">🏆 O</span>';
+
+  if(str === "s")
+    return '<span class="badge-ui badge-s">✅ S</span>';
+
+  if(str === "u")
+    return '<span class="badge-ui badge-u">❌ U</span>';
+
+  if(str === "upskill")
+    return '<span class="badge-ui badge-upskill">🚀 UpSkill</span>';
+
+  return val;
+}
+
+async function loadScore(email){
+  switchView('mainContent');
+
+  document.getElementById('scoreContent').innerHTML = `
+    <div class="text-center py-5">
+      <div class="spinner-border text-success"></div>
+    </div>
+  `;
+
+  try {
+    const user = auth.currentUser;
+    if (!user) throw new Error("No user logged in");
+    
+    // ดึง Token จาก Firebase Auth ส่งไปตรวจที่ Backend เพื่อความปลอดภัย
+    const idToken = await user.getIdToken();
+
+    // ทำการ fetch ยิง API ข้ามโดเมนไปที่ Google Apps Script
+    const response = await fetch(GAS_API_URL, {
+      method: 'POST',
+      headers: {
+        // ใช้ text/plain เพื่อป้องกันปัญหา CORS Preflight ของฝั่ง Browser
+        'Content-Type': 'text/plain;charset=utf-8' 
+      },
+      body: JSON.stringify({ idToken: idToken })
+    });
+
+    const res = await response.json();
+
+    if(res.success){
+      scores = res.allData;
+      window.subjectCode = (res.subjectInfo || '').trim().substring(0, 6);
+      
+      document.getElementById('headerUser').innerHTML = `
+        <img src="${user?.photoURL || ''}" alt="Profile">
+        <div class="user-meta">
+          <div class="student-id">${res.studentName || '-'}</div>
+          <div class="student-id">${res.studentId || '-'}</div>
+          <div class="student-id">${res.subjectInfo || '-'}</div>
+        </div>
+      `;
+      renderScores();
+    } else {
+      showLoginError(res.msg);
+      logout().catch(err => console.error('Sign out error:', err));
+    }
+    
+  } catch (err) {
+    console.error('Fetch error:', err);
+    showLoginError('เชื่อมต่อเซิร์ฟเวอร์ไม่สำเร็จ กรุณาลองใหม่อีกครั้ง');
+    logout().catch(err => console.error('Sign out error:', err));
+  }
+}
+
+async function handleLogout(){
+
+  try {
+
+    await logout();
+
+    scores = {};
+    userData = {};
+    currentTab = '#tabDash';
+
+    document.getElementById('headerUser').innerHTML = '';
+    document.getElementById('scoreContent').innerHTML = '';
+    showLoggedOutView();
+
+  } catch (err) {
+
+    console.error('Logout error:', err);
+    showLoginError('ออกจากระบบไม่สำเร็จ กรุณารีเฟรชหน้าแล้วลองอีกครั้ง');
+
+  }
+
+}
+
+function refreshCurrentPage(){
+
+  const user =
+    auth.currentUser;
+
+  if(user){
+
+    loadScore(user.email);
+
+  }
+
+}
+
+function getR(c,label=null){
+
+  if(!scores[c]) return "";
+
+  const header =
+    (label || scores[c].label || '')
+    .toString()
+    .trim();
+
+  if(header === "")
+    return "";
+
+  return `
+  <div class="data-row">
+    <span>${header}</span>
+    <b>${fmt(scores[c].value)}</b>
+  </div>
+  `;
+}
+
+// =========================
+// เพิ่มส่วนนี้ก่อน renderScores()
+// =========================
+
+function isTab(tab){
+
+  return currentTab === tab
+    ? 'show active'
+    : '';
+
+}
+
+function isBtn(tab){
+
+  return currentTab === tab
+    ? 'active'
+    : '';
+
+}
+
+function renderScores(){
+
+document.getElementById('scoreContent').innerHTML = `
+
+<div class="tab-pane fade ${isTab('#tabDash')}" id="tabDash">
+
+<div class="text-center">
+
+<div class="small text-muted" style="font-size:0.8rem;">
+Grade ${window.subjectCode || ''}
+</div>
+
+<div class="big-grade">
+${scores['CT']?.value || '-'}
+</div>
+
+</div>
+
+<div class="status-box">
+
+<h6 class="fw-bold mb-2">
+📊 Class Attendance
+</h6>
+
+${getR('G')}
+${getR('I')}
+${getR('CH')}
+
+</div>
+
+<div class="status-box">
+
+<h6 class="fw-bold mb-2">
+🎯 Grade CLO
+</h6>
+
+${getR('CO')}
+${getR('CP')}
+${getR('CQ')}
+
+</div>
+
+</div>
+
+<!-- CLO1 -->
+
+<div class="tab-pane fade ${isTab('#tab1')}" id="tab1">
+
+<div class="text-center">
+
+<div class="small text-muted" style="font-size:0.8rem;">
+Grade CLO1
+</div>
+
+<div class="big-grade"
+style="font-size:3.5rem;">
+
+${scores['CO']?.value || '-'}
+
+</div>
+
+</div>
+
+<div class="status-box">
+
+<h6 class="fw-bold mb-2">
+📝 Scores
+</h6>
+
+${['J','K','L','M','N','O','P','Q','R','S','T','U']
+.map(c => getR(c))
+.join('')}
+
+<div class="data-row fw-bold total-row">
+
+<span>
+${scores['V']?.label || 'รวม CLO1'}
+</span>
+
+<b>
+${fmt(scores['V']?.value || '-')}
+</b>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CLO2 -->
+
+<div class="tab-pane fade ${isTab('#tab2')}" id="tab2">
+
+<div class="text-center">
+
+<div class="small text-muted" style="font-size:0.8rem;">
+Grade CLO2
+</div>
+
+<div class="big-grade"
+style="font-size:3.5rem;">
+
+${scores['CP']?.value || '-'}
+</div>
+
+</div>
+
+<div class="status-box">
+
+<h6 class="fw-bold mb-3">
+📝 Scores
+</h6>
+
+${['Y','Z','AA','AB','AC','AD','AE','AF','AG','AH','AI','AJ']
+.map(c => getR(c))
+.join('')}
+
+<div class="data-row fw-bold total-row">
+
+<span>
+${scores['AK']?.label || 'รวม CLO2'}
+</span>
+
+<b>
+${fmt(scores['AK']?.value || '-')}
+</b>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CLO3 -->
+
+<div class="tab-pane fade ${isTab('#tab3')}" id="tab3">
+
+<div class="text-center">
+
+<div class="small text-muted" style="font-size:0.8rem;">
+Grade CLO3
+</div>
+
+<div class="big-grade"
+style="font-size:3.5rem;">
+
+${scores['CQ']?.value || '-'}
+</div>
+
+</div>
+
+<div class="status-box">
+
+<h6 class="fw-bold mb-3">
+📝 Scores
+</h6>
+
+${['AN','AO','AP','AQ','AR','AS','AT','AU','AV','AW','AX','AY']
+.map(c => getR(c))
+.join('')}
+
+<div class="data-row fw-bold total-row">
+
+<span>
+${scores['AZ']?.label || 'รวม CLO3'}
+</span>
+
+<b>
+${fmt(scores['AZ']?.value || '-')}
+</b>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+activateTab(currentTab || '#tabDash');
+
+}
+
+function activateTab(tabId){
+
+  document
+  .querySelectorAll('.tab-pane')
+  .forEach(el => {
+
+    el.classList.remove(
+      'show',
+      'active'
+    );
+
+  });
+
+  document
+  .querySelectorAll('.nav-link')
+  .forEach(el => {
+
+    el.classList.remove('active');
+
+  });
+
+  const tab =
+    document.querySelector(tabId);
+
+  if(tab){
+
+    tab.classList.add(
+      'show',
+      'active'
+    );
+
+  }
+
+  const btn =
+    document.querySelector(
+      `[data-bs-target="${tabId}"]`
+    );
+
+  if(btn){
+
+    btn.classList.add('active');
+
+  }
+
+}
+
+function showLoginError(message){
+
+  const box =
+    document.getElementById("loginError");
+
+  box.innerHTML =
+  `
+  <div style="display:flex;gap:10px;align-items:flex-start;">
+        <div style="margin-top:4px;">
+          ${message}
+        </div>
+  </div>
+  `;
+
+  box.style.display = "block";
+
+}
+
+function hideLoginError(){
+
+  document.getElementById("loginError").style.display="none";
+
+}
+function showLoginModal(){
+
+    const modal =
+      new bootstrap.Modal(
+        document.getElementById("loginModal")
+      );
+
+    modal.show();
+
+}
+
+function confirmLogin(){
+
+    bootstrap.Modal
+      .getInstance(
+        document.getElementById("loginModal")
+      )
+      .hide();
+
+    loginGoogle();
+
+}
+
+const initAuth = (
+  onAuthSuccess,
+  onAuthFailure
+) => {
+
+  return onAuthStateChanged(auth, async user => {
+
+    isSigningIn = false;
+    isLoggingIn = false;
+
+    if (!user) {
+      cachedAccessToken = null;
+      if (onAuthFailure) onAuthFailure();
+      return;
+    }
+
+    const email = (user.email || '').trim().toLowerCase();
+
+    if (!email.endsWith('@g.swu.ac.th')) {
+
+      await logout();
+      showLoginError('กรุณาเข้าสู่ระบบด้วยบัญชี @g.swu.ac.th เท่านั้น');
+
+      if (onAuthFailure) onAuthFailure();
+      return;
+    }
+
+    if (onAuthSuccess) {
+      onAuthSuccess(user, cachedAccessToken);
+    }
+
+  });
+
+};
+
+const googleSignIn = async () => {
+
+  try {
+
+    isSigningIn = true;
+
+    const result = await signInWithPopup(auth, provider);
+
+    console.log('Signed in as:', result.user.email);
+
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+
+    // Access token ใช้เฉพาะกรณีเรียก Google API จาก Browser โดยตรง
+    cachedAccessToken = credential?.accessToken || null;
+
+    return {
+      user: result.user,
+      accessToken: cachedAccessToken
+    };
+
+  } catch (error) {
+
+    console.error('Sign in error:', error);
+    throw error;
+
+  } finally {
+
+    isSigningIn = false;
+
+  }
+
+};
+
+const getAccessToken = async () => cachedAccessToken;
+
+const logout = async () => {
+
+  await signOut(auth);
+  cachedAccessToken = null;
+
+};
+
+function showLoggedOutView(){
+
+  document.getElementById('mainContent').style.display = 'none';
+  document.getElementById('globalHeader').style.display = 'none';
+  document.getElementById('loginView').style.display = 'flex';
+
+}
+
+async function loginGoogle(){
+
+  // ป้องกันการกด Login ซ้ำ
+  if (isLoggingIn || isSigningIn) return;
+
+  if (!authReady) {
+    showLoginError('ระบบเข้าสู่ระบบยังไม่พร้อม กรุณารอสักครู่แล้วลองใหม่');
+    return;
+  }
+
+  isLoggingIn = true;
+  hideLoginError();
+
+  try {
+
+    const result = await googleSignIn();
+    const email = (result?.user?.email || '').trim().toLowerCase();
+
+    // ตรวจสอบอีกครั้งก่อนอนุญาตให้ใช้งาน
+    if (!email.endsWith('@g.swu.ac.th')) {
+
+      await logout();
+      showLoginError('กรุณาเข้าสู่ระบบด้วยบัญชี @g.swu.ac.th เท่านั้น');
+      return;
+
+    }
+
+  } catch (err) {
+
+    if (err.code === 'auth/popup-closed-by-user') {
+      showLoginError('หน้าต่างเข้าสู่ระบบถูกปิด กรุณาลองใหม่');
+
+    } else if (err.code === 'auth/popup-blocked') {
+      showLoginError('เบราว์เซอร์บล็อก Pop-up กรุณาอนุญาต Pop-up แล้วลองใหม่');
+
+    } else if (err.code === 'auth/cancelled-popup-request') {
+      showLoginError('มีคำขอเข้าสู่ระบบซ้ำ กรุณารอสักครู่แล้วลองใหม่');
+
+    } else if (err.code === 'auth/network-request-failed') {
+      showLoginError('ไม่สามารถเชื่อมต่อเครือข่ายได้ กรุณาตรวจสอบอินเทอร์เน็ต');
+
+    } else {
+      showLoginError(`เข้าสู่ระบบไม่สำเร็จ: ${err.message || err.code || 'Unknown error'}`);
+    }
+
+  } finally {
+
+    isLoggingIn = false;
+
+  }
+
+}
+
+async function initializeAuth(){
+
+  try {
+
+    // เทียบเท่า firebase.auth.Auth.Persistence.NONE
+    // สถานะ Login จะอยู่เฉพาะในหน่วยความจำและหายเมื่อ Refresh
+    await setPersistence(auth, inMemoryPersistence);
+
+    // ล้างสถานะ Login เดิมที่อาจเหลือจากเวอร์ชัน compat
+    if (auth.currentUser) {
+      await logout();
+    }
+
+    authReady = true;
+
+    unsubscribeAuth = initAuth(
+      (user) => {
+
+        document.getElementById('loginView').style.display = 'none';
+        loadScore(user.email);
+
+      },
+      () => {
+
+        showLoggedOutView();
+
+      }
+    );
+
+  } catch (err) {
+
+    authReady = false;
+    console.error('Firebase initialization error:', err);
+    showLoginError(`ไม่สามารถเริ่มระบบเข้าสู่ระบบได้: ${err.message || err.code || 'Unknown error'}`);
+
+  }
+
+}
+
+// ฟังก์ชันใน ES module จะไม่ถูกเพิ่มลง window อัตโนมัติ
+// จึง expose เฉพาะฟังก์ชันที่ถูกเรียกจาก onclick ใน HTML
+Object.assign(window, {
+  showLoginModal,
+  confirmLogin,
+  handleLogout,
+  refreshCurrentPage,
+  getAccessToken
+});
+
+initializeAuth();
+
+</script>
+</div>
+</div>
+</div>
+<div class="modal fade" id="loginModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered" style="max-width:430px;">
+    <div class="modal-content" style="border-radius:20px;">
+
+      <div class="modal-body text-center" style="font-size:.95rem;line-height:1.8;padding:28px 24px;">
+
+        <div style="font-size:2rem;">🎓</div>
+
+        <div style="font-size:1.15rem;font-weight:700;margin:10px 0 16px;">
+          ก่อนเข้าสู่ระบบดูคะแนน GE Smart Score
+        </div>
+
+        <div>
+          <span style="color:#166534;">
+          <b>✅เปิดได้เฉพาะ Chrome หรือ Safari เท่านั้น</b><br>
+          </span>
+
+          <span style="color:#b91c1c;">
+            <b>⚠️หากเปิดผ่าน LINE App อาจไม่สามารถเข้าสู่ระบบได้</b>
+          </span>
+
+        </div>
+
+      </div>
+
+      <div class="modal-footer border-0 justify-content-center">
+
+        <button class="btn btn-main px-4" onclick="confirmLogin()">
+          รับทราบ
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>
